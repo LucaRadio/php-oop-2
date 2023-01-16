@@ -12,7 +12,6 @@ require_once "./classes/Food.php";
     <title>E-Commerce</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
@@ -20,7 +19,7 @@ require_once "./classes/Food.php";
     <div class="container">
         <h1 class="py-4">Animal e-commerce</h1>
         <div class="row row-cols-3 g-5 p-4">
-            <?php foreach ($productList as $product) { ?>
+            <?php foreach ($productList as $key => $product) { ?>
                 <div class="col d-flex">
                     <div class="card">
                         <?php if ($product["type"] === "food") {
@@ -45,7 +44,10 @@ require_once "./classes/Food.php";
                                 ?>
                             </p>
                             <p class="card-text"><?php echo $product["price"] ?> €</p>
-                            <a href="./buy.php" class="btn btn-primary">Buy</a>
+                            <form target="_blank" action="./buy.php" method="POST">
+                                <input class="d-none" name="index" type="hidden" value="<?php echo $key ?>">
+                                <button class="btn btn-primary">Buy</button>
+                            </form>
                         </div>
                     </div>
                 </div>
