@@ -7,7 +7,9 @@ require_once "./classes/Game.php";
 require_once "./classes/AnimalBed.php";
 require_once "./classes/Category.php";
 
-$_SESSION["cart"];
+if (isset($_SESSION["cart"])) {
+    $_SESSION["cart"];
+}
 
 function set()
 {
@@ -20,8 +22,6 @@ function set()
 if (isset($_GET["set"]) === true) {
     set();
 }
-
-var_dump($_SESSION["cart"]);
 function checkData($product)
 {
     $toReturn = "";
@@ -151,7 +151,7 @@ function checkData($product)
                             <div class="price"><strong class="fs-3">
 
                                     <?php
-                                    echo ($productList[$productOnCart["index"]]["price"] * $productOnCart["quantity"]) ?? "" . "€"  ?> </strong></div>
+                                    echo number_format(($productList[$productOnCart["index"]]["price"] * $productOnCart["quantity"] ?? ""), 2) . " €"  ?> </strong></div>
 
                         </div>
 
@@ -163,16 +163,17 @@ function checkData($product)
                     <div class="buy">
                         <div class="total">
                             <div class="desc mb-3 fs-3">Total:</div>
-                            <div class="total-price fs-3">
+                            <div class="total-price fs-3 text-end">
                                 <strong><?php
                                         $totalPrice = [];
                                         foreach ($_SESSION["cart"] as $productOne) {
-
-                                            $totalPrice[] = $productList[$productOnCart["index"]]["price"] * $productOnCart["quantity"];
+                                            $singlePrice = $productList[$productOnCart["index"]]["price"] * $productOnCart["quantity"];
+                                            array_push($totalPrice, $singlePrice);
                                         }
-
-                                        $totalPrice = array_sum($totalPrice);
-                                        echo $totalPrice; ?> </strong>
+                                        $totalPrice = array_sum($totalPrice) ?? 0;
+                                        $_SESSION["totalPrice"][] = $totalPrice;
+                                        echo number_format($totalPrice, 2) . " €";
+                                        ?> </strong>
                             </div>
                         </div>
                         <form action="./buy.php">

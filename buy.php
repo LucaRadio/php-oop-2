@@ -1,6 +1,8 @@
 <?php
 session_start();
 include_once "./data/db.php";
+var_dump($_SESSION["cart"]);
+var_dump($_SESSION["totalPrice"]);
 
 ?>
 
@@ -20,13 +22,13 @@ include_once "./data/db.php";
 <body class="bg-secondary text-center">
     <div class="container">
         <h1 class="text-primary">Checkout</h1>
-        <p class="fs-3"> Your are going to spend <?php echo $_SESSION["cart"]["price"] ?>!</p>
+        <p class="fs-3"> Your are going to spend <?php echo number_format($_SESSION["totalPrice"][0], 2) . " €" ?>!</p>
         <p class="fs-5">Please, insert your credit card below</p>
         <div class="row justify-content-center">
             <div class="col-6 rounded-3 bg-white p-3">
-                <form action="./payed.php" method="POST">
+                <form action="./payed.php?reset=true" method="POST">
                     <input type="text" name="name" class="form-control mb-3" placeholder="Owner" required>
-                    <input type="number" class="form-control mb-3" placeholder="Card Number" required>
+                    <input max="9999999999999999" min="1000000000000000" type="number" class="form-control mb-3" placeholder="Card Number" required>
                     <select class="form-select w-auto d-inline-block" required>
                         <option value="jan">1</option>
                         <option value="feb">2</option>
@@ -50,7 +52,7 @@ include_once "./data/db.php";
                         <option>28</option>
                         <option>29</option>
                     </select>
-                    <input type="number" class="form-control w-auto d-inline-block" placeholder="CVV">
+                    <input type="number" max="999" min="100" class="form-control w-auto d-inline-block" placeholder="CVV" required>
                     <button class="btn btn-primary">Pay</button>
                 </form>
             </div>
