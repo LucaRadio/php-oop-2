@@ -36,10 +36,6 @@ require_once "./classes/Category.php";
                                 $product["image"],
                                 $product["weight"]
                             );
-
-                        ?>
-                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
-                        <?php
                         } else if ($product["type"] === "game") {
                             $product = new GameProduct(
                                 $product["name"],
@@ -49,9 +45,6 @@ require_once "./classes/Category.php";
                                 $product["image"],
                                 $product["weight"]
                             );
-                        ?>
-                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
-                        <?php
                         } else {
                             $product = new AnimalBedProduct(
                                 $product["name"],
@@ -62,20 +55,24 @@ require_once "./classes/Category.php";
                                 $product["weight"]
                             );
                         ?>
-                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <?php
                         } ?>
                         <div class="card-body d-flex flex-column justify-content-end">
+                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                             <h5 class="card-title">
                                 <?php
                                 echo $product->getName();
                                 ?>
                             </h5>
-                            <p class="card-text"><?php echo $product->getDescription(); ?></p>
+                            <p class="card-text">
+                                <?php echo $product->getDescription(); ?>
+                            </p>
                             <p class="card-text">Category:
                                 <?php echo $product->getCategory()->getIcon() ?>
                             </p>
-                            <p class="card-text"><?php echo $product->getPrice(); ?> €</p>
+                            <p class="card-text">
+                                <?php echo $product->getPrice(); ?>
+                                €</p>
                             <form target="_blank" action="./buy.php" method="POST">
                                 <input class="d-none" name="index" type="hidden" value="<?php echo $key ?>">
                                 <button class="btn btn-primary">Buy</button>
