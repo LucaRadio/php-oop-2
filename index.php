@@ -6,6 +6,19 @@ require_once "./classes/Game.php";
 require_once "./classes/AnimalBed.php";
 require_once "./classes/Category.php";
 
+function checkData($product)
+{
+    $toReturn = "";
+    if (property_exists($product, "ingredient")) {
+        $toReturn = "<strong>Ingredient:</strong> <br>" . $product->getIngredient();
+    } else if (property_exists($product, "material")) {
+        $toReturn = "<strong>Material:</strong><br>" . $product->getMaterial();
+    } else {
+        $toReturn = "<strong>Sizes:</strong><br>" . $product->getSize();;
+    }
+
+    return $toReturn;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +43,7 @@ require_once "./classes/Category.php";
                         <?php if ($product["type"] === "food") {
                             $product = new FoodProduct(
                                 $product["name"],
+                                $product["ingredient"],
                                 $product["price"],
                                 $product["description"],
                                 new Category($product["category"]),
@@ -39,6 +53,7 @@ require_once "./classes/Category.php";
                         } else if ($product["type"] === "game") {
                             $product = new GameProduct(
                                 $product["name"],
+                                $product["material"],
                                 $product["price"],
                                 $product["description"],
                                 new Category($product["category"]),
@@ -48,6 +63,7 @@ require_once "./classes/Category.php";
                         } else {
                             $product = new AnimalBedProduct(
                                 $product["name"],
+                                $product["size"],
                                 $product["price"],
                                 $product["description"],
                                 new Category($product["category"]),
@@ -57,22 +73,31 @@ require_once "./classes/Category.php";
                         ?>
                         <?php
                         } ?>
+                        <img class="card-img-top object-fit-contain" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <div class="card-body d-flex flex-column justify-content-end">
-                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                             <h5 class="card-title">
                                 <?php
                                 echo $product->getName();
                                 ?>
                             </h5>
                             <p class="card-text">
+                                <strong>Description:</strong>
                                 <?php echo $product->getDescription(); ?>
                             </p>
-                            <p class="card-text">Category:
+                            <p class="card-text">
+                                <strong>Weight:</strong>
+                                <?php echo $product->getWeight(); ?>
+                            </p>
+                            <p class="card-text">
+                                <strong>Category:</strong>
                                 <?php echo $product->getCategory()->getIcon() ?>
                             </p>
                             <p class="card-text">
+                                <strong>Price:</strong>
                                 <?php echo $product->getPrice(); ?>
-                                €</p>
+                                €
+                            </p>
+                            <p class="card-text"> <?php echo checkData($product) ?></p>
                             <form target="_blank" action="./buy.php" method="POST">
                                 <input class="d-none" name="index" type="hidden" value="<?php echo $key ?>">
                                 <button class="btn btn-primary">Buy</button>

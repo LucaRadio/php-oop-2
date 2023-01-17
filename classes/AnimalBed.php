@@ -1,35 +1,16 @@
 <?php
 class AnimalBedProduct extends Product
 {
+    private $size = [];
+    private $weight;
 
-    protected $category;
-    protected $weight;
-
-    public function __construct($name, $price, $description, Category $category, $image, $weight)
+    public function __construct($name, $size, $price, $description, Category $category, $image, $weight)
     {
-        $this->setCategory($category);
+        $this->setSize($size);
         $this->setWeight($weight);
         parent::__construct($name, $price, $description, $category, $image, $weight);
     }
-    /**
-     * Get the value of category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
 
-    /**
-     * Set the value of category
-     *
-     * @return  self
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
-    }
 
     /**
      * Get the value of weight
@@ -47,6 +28,27 @@ class AnimalBedProduct extends Product
     public function setWeight($weight)
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of size
+     */
+    public function getSize()
+    {
+        $this->size = implode("cm X", $this->size);
+        return $this->size;
+    }
+
+    /**
+     * Set the value of size
+     *
+     * @return  self
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
 
         return $this;
     }

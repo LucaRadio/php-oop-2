@@ -7,7 +7,13 @@ $productList = [
         "weight" => "12kg",
         "description" => "Natural Hunter's dog food made by 65% animal ingredients and by 35% fruits and vegetables. ",
         "category" => "dog",
-        "type" => "food"
+        "type" => "food",
+        "ingredient" => [
+            "Lamb (38%)",
+            "rice (15%)",
+            "Potato's proteins (5%)",
+            "Others"
+        ]
     ],
     [
         "name" => "Cat Food",
@@ -16,7 +22,13 @@ $productList = [
         "description" => "Our cat food made by 70% animal ingredient for quality e rich supply",
         "category" => "cat",
         "weight" => "7kg",
-        "type" => "food"
+        "type" => "food",
+        "ingredient" => [
+            "Meat (14%)",
+            "Vegetables protein's extract",
+            "Fish",
+            "Sugar"
+        ]
     ],
     [
         "name" => "Tumble Teez",
@@ -25,7 +37,10 @@ $productList = [
         "description" => "Game for you dog that sneez when chewed",
         "category" => "dog",
         "weight" => "100g",
-        "type" => "game"
+        "type" => "game",
+        "material" => [
+            "plastic"
+        ]
     ],
     [
         "name" => "Scratching post",
@@ -34,7 +49,11 @@ $productList = [
         "description" => "Scratching post for you cat that's feel hungry against the world",
         "category" => "cat",
         "weight" => "6kg",
-        "type" => "game"
+        "type" => "game",
+        "material" => [
+            "wood",
+            "fabric"
+        ]
     ],
     [
         "name" => "Dog bed",
@@ -43,15 +62,24 @@ $productList = [
         "description" => "Dog's bed for chilling",
         "category" => "dog",
         "weight" => "1kg",
-        "type" => "animalBed"
+        "type" => "animalBed",
+        "size" => [
+            "width" => "90",
+            "length" => "60",
+            "height" => "15"
+        ]
     ],
     [
         "name" => "Cat's game",
         "price" => 14.95,
-        "image" => "./img/bed.jpg",
+        "image" => "./img/game.png",
         "description" => "Cat's Games for fun",
         "category" => "dog",
         "weight" => "0.5kg",
-        "type" => "game"
+        "type" => "game",
+        "material" => [
+            "plastic",
+            "fabric"
+        ]
     ],
 ];
