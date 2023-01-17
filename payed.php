@@ -1,4 +1,6 @@
 <?php
+session_unset();
+session_destroy();
 $name = $_POST["name"];
 
 ?>

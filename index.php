@@ -19,6 +19,7 @@ function set()
     ];
 }
 
+
 if (isset($_GET["set"]) === true) {
     set();
 }
@@ -166,19 +167,20 @@ function checkData($product)
                             <div class="total-price fs-3 text-end">
                                 <strong><?php
                                         $totalPrice = [];
-                                        foreach ($_SESSION["cart"] as $productOne) {
-                                            $singlePrice = $productList[$productOnCart["index"]]["price"] * $productOnCart["quantity"];
+                                        foreach ($_SESSION["cart"] as $key => $productOne) {
+                                            $singlePrice = ($productList[(int)$productOne["index"]]["price"] * (int) $productOne["quantity"]);
+
                                             array_push($totalPrice, $singlePrice);
                                         }
-                                        $totalPrice = array_sum($totalPrice) ?? 0;
+
+                                        $totalPrice = array_sum($totalPrice);
                                         $_SESSION["totalPrice"][] = $totalPrice;
                                         echo number_format($totalPrice, 2) . " €";
                                         ?> </strong>
                             </div>
                         </div>
-                        <form action="./buy.php">
+                        <form action="./registration.php">
                             <button class="btn btn-primary">Buy</button>
-                            <?php ?>
                         </form>
                     </div>
                 </div>
