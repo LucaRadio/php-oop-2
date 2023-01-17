@@ -48,7 +48,7 @@ class GameProduct extends Product
      */
     public function getMaterial()
     {
-        $this->material = implode(",", $this->material);
+        $this->material = implode(",<br>", $this->material);
         return $this->material;
     }
 }

@@ -1,6 +1,7 @@
 <?php
+session_start();
 include_once "./data/db.php";
-$boughtProduct = $productList[$_POST["index"]];
+
 ?>
 
 
@@ -19,7 +20,7 @@ $boughtProduct = $productList[$_POST["index"]];
 <body class="bg-secondary text-center">
     <div class="container">
         <h1 class="text-primary">Checkout</h1>
-        <p class="fs-3">You are buying "<?php echo $boughtProduct["name"] ?>"</p>
+        <p class="fs-3"> Your are going to spend <?php echo $_SESSION["cart"]["price"] ?>!</p>
         <p class="fs-5">Please, insert your credit card below</p>
         <div class="row justify-content-center">
             <div class="col-6 rounded-3 bg-white p-3">
