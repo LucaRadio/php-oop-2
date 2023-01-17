@@ -2,7 +2,7 @@
 $productList = [
     [
         "name" => "Dog food",
-        "brand" => "Natural Hunter",
+        "image" => "./img/food.jpg",
         "price" => 53.99,
         "weight" => "12kg",
         "description" => "Natural Hunter's dog food made by 65% animal ingredients and by 35% fruits and vegetables. ",
@@ -11,7 +11,7 @@ $productList = [
     ],
     [
         "name" => "Cat Food",
-        "brand" => "Ultra Premium",
+        "image" => "./img/food.jpg",
         "price" => 39.99,
         "description" => "Our cat food made by 70% animal ingredient for quality e rich supply",
         "category" => "cat",
@@ -21,7 +21,7 @@ $productList = [
     [
         "name" => "Tumble Teez",
         "price" => 6.78,
-        "brand" => "JW",
+        "image" => "./img/game.png",
         "description" => "Game for you dog that sneez when chewed",
         "category" => "dog",
         "weight" => "100g",
@@ -30,7 +30,7 @@ $productList = [
     [
         "name" => "Scratching post",
         "price" => 49.95,
-        "brand" => "Lionto",
+        "image" => "./img/game.png",
         "description" => "Scratching post for you cat that's feel hungry against the world",
         "category" => "cat",
         "weight" => "6kg",
@@ -39,7 +39,7 @@ $productList = [
     [
         "name" => "Dog bed",
         "price" => 18.95,
-        "brand" => "Lionto",
+        "image" => "./img/bed.jpg",
         "description" => "Dog's bed for chilling",
         "category" => "dog",
         "weight" => "1kg",
@@ -48,7 +48,7 @@ $productList = [
     [
         "name" => "Cat's game",
         "price" => 14.95,
-        "brand" => "WeFine",
+        "image" => "./img/bed.jpg",
         "description" => "Cat's Games for fun",
         "category" => "dog",
         "weight" => "0.5kg",

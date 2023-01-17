@@ -4,6 +4,8 @@ require_once "./classes/Product.php";
 require_once "./classes/Food.php";
 require_once "./classes/Game.php";
 require_once "./classes/AnimalBed.php";
+require_once "./classes/Category.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,20 +28,41 @@ require_once "./classes/AnimalBed.php";
                 <div class="col d-flex">
                     <div class="card">
                         <?php if ($product["type"] === "food") {
-                            $product = new FoodProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+                            $product = new FoodProduct(
+                                $product["name"],
+                                $product["price"],
+                                $product["description"],
+                                new Category($product["category"]),
+                                $product["image"],
+                                $product["weight"]
+                            );
 
                         ?>
-                            <img class="card-img-top" src="./img/food.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <?php
                         } else if ($product["type"] === "game") {
-                            $product = new GameProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+                            $product = new GameProduct(
+                                $product["name"],
+                                $product["price"],
+                                $product["description"],
+                                new Category($product["category"]),
+                                $product["image"],
+                                $product["weight"]
+                            );
                         ?>
-                            <img class="card-img-top" src="./img/game.png" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <?php
                         } else {
-                            $product = new AnimalBedProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+                            $product = new AnimalBedProduct(
+                                $product["name"],
+                                $product["price"],
+                                $product["description"],
+                                new Category($product["category"]),
+                                $product["image"],
+                                $product["weight"]
+                            );
                         ?>
-                            <img class="card-img-top" src="./img/bed.jpg" alt="Card image cap">
+                            <img class="card-img-top" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <?php
                         } ?>
                         <div class="card-body d-flex flex-column justify-content-end">
@@ -49,12 +72,8 @@ require_once "./classes/AnimalBed.php";
                                 ?>
                             </h5>
                             <p class="card-text"><?php echo $product->getDescription(); ?></p>
-                            <p class="card-text">Category: <?php if ($product->getCategory() === "dog") { ?>
-                                    <i class="fa-solid fa-dog"></i>
-                                <?php } else { ?>
-                                    <i class="fa-solid fa-cat"></i>
-                                <?php  }
-                                ?>
+                            <p class="card-text">Category:
+                                <?php echo $product->getCategory()->getIcon() ?>
                             </p>
                             <p class="card-text"><?php echo $product->getPrice(); ?> €</p>
                             <form target="_blank" action="./buy.php" method="POST">

@@ -5,11 +5,11 @@ class GameProduct extends Product
     protected $weight;
 
 
-    public function __construct($name, $brand, $price, $description, $category, $weight)
+    public function __construct($name, $price, $description, Category $category, $image, $weight)
     {
         $this->setCategory($category);
         $this->setWeight($weight);
-        parent::__construct($name, $brand, $price, $description);
+        parent::__construct($name, $price, $description, $category, $image, $weight);
     }
 
     /**

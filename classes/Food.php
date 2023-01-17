@@ -1,36 +1,15 @@
 <?php
 require_once "./classes/Product.php";
+require_once "./classes/Category.php";
 
 class FoodProduct extends Product
 {
-    private $category = "food";
     private $weight;
 
-    public function __construct($name, $brand, $price, $description, $category, $weight)
+    public function __construct($name, $price, $description, Category $category, $image, $weight)
     {
-        $this->setCategory($category);
         $this->setWeight($weight);
-        parent::__construct($name, $brand, $price, $description);
-    }
-
-    /**
-     * Get the value of category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Set the value of category
-     *
-     * @return  self
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-
-        return $this;
+        parent::__construct($name, $price, $description, $category, $image);
     }
 
     /**

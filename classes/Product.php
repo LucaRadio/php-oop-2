@@ -2,17 +2,19 @@
 class Product
 {
     protected $name;
-    protected $brand;
     protected $price;
+    protected $image;
     protected $description;
+    protected $category;
 
 
-    public function __construct($name, $brand, $price, $description)
+    public function __construct($name, $price, $description, Category $category, $image)
     {
         $this->setName($name);
         $this->setPrice($price);
         $this->setDescription($description);
-        $this->setBrand($brand);
+        $this->setCategory($category);
+        $this->setImage($image);
     }
 
     /**
@@ -76,21 +78,41 @@ class Product
     }
 
     /**
-     * Get the value of brand
+     * Get the value of category
      */
-    public function getBrand()
+    public function getCategory()
     {
-        return $this->brand;
+        return $this->category;
     }
 
     /**
-     * Set the value of brand
+     * Set the value of category
      *
      * @return  self
      */
-    public function setBrand($brand)
+    public function setCategory($category)
     {
-        $this->brand = $brand;
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
 
         return $this;
     }
