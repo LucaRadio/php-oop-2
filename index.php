@@ -1,6 +1,9 @@
 <?php
 include_once "./data/db.php";
+require_once "./classes/Product.php";
 require_once "./classes/Food.php";
+require_once "./classes/Game.php";
+require_once "./classes/AnimalBed.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,18 +26,28 @@ require_once "./classes/Food.php";
                 <div class="col d-flex">
                     <div class="card">
                         <?php if ($product["type"] === "food") {
+                            new FoodProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+
                         ?>
                             <img class="card-img-top" src="./img/food.jpg" alt="Card image cap">
                         <?php
-                        } else if ($product["type"] === "game") { ?>
+                        } else if ($product["type"] === "game") {
+                            new GameProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+                        ?>
                             <img class="card-img-top" src="./img/game.png" alt="Card image cap">
                         <?php
-                        } else { ?>
+                        } else {
+                            new AnimalBedProduct($product["name"], $product["brand"], $product["price"], $product["description"], $product["category"], $product["weight"]);
+                        ?>
                             <img class="card-img-top" src="./img/bed.jpg" alt="Card image cap">
                         <?php
                         } ?>
                         <div class="card-body d-flex flex-column justify-content-end">
-                            <h5 class="card-title"><?php echo $product["name"] ?></h5>
+                            <h5 class="card-title">
+                                <?php
+                                echo $product["name"];
+                                ?>
+                            </h5>
                             <p class="card-text"><?php echo $product["description"] ?></p>
                             <p class="card-text">Category: <?php if ($product["category"] === "dog") { ?>
                                     <i class="fa-solid fa-dog"></i>
