@@ -1,6 +1,8 @@
 <?php
+require_once "./traits/Id.php";
 class Product
 {
+    use Id;
     protected $name;
     protected $price;
     protected $image;
@@ -10,6 +12,7 @@ class Product
 
     public function __construct($name, $price, $description, Category $category, $image)
     {
+        $this->setId();
         $this->setName($name);
         $this->setPrice($price);
         $this->setDescription($description);

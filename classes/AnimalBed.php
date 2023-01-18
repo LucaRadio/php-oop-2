@@ -37,7 +37,7 @@ class AnimalBedProduct extends Product
      */
     public function getSize()
     {
-        $this->size = implode("cm X", $this->size);
+        $this->size = implode("X", $this->size);
         return $this->size;
     }
 

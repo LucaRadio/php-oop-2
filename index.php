@@ -93,8 +93,6 @@ function checkData($product)
                                 $product["image"],
                                 $product["weight"]
                             );
-                        ?>
-                        <?php
                         } ?>
                         <img class="w-100 object-fit-contain" src="<?php echo $product->getImage() ?>" alt="Card image cap">
                         <div class="card-body d-flex flex-column justify-content-end">

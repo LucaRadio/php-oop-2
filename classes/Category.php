@@ -6,10 +6,16 @@ class Category
     public function __construct($name)
     {
         $this->setName($name);
-        if ($name === "dog") {
-            $this->icon = "<i class='fa-solid fa-dog'></i>";
-        } else {
-            $this->icon = "<i class='fa-solid fa-cat'></i>";
+        try {
+            if ($name === "dog") {
+                $this->icon = "<i class='fa-solid fa-dog'></i>";
+            } else if ($name === "cat") {
+                $this->icon = "<i class='fa-solid fa-cat'></i>";
+            } else {
+                throw new Exception("<i class='fa-solid fa-question'></i>");
+            }
+        } catch (Exception $e) {
+            $this->icon =  $e->getMessage();
         }
     }
 
